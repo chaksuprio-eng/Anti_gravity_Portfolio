@@ -547,6 +547,731 @@
     /* ── Nav Scroll Effect ── */
     window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('py-2', scrollY > 80) });
   </script>
+  <!-- =========================================
+ANTIGRAVITY AI CHATBOT
+PASTE THIS BEFORE </body>
+========================================= -->
+
+<style>
+
+/* =========================================
+   ANTIGRAVITY AI BOT
+========================================= */
+
+#ag-ai-wrapper{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  z-index:99999;
+  font-family:'Inter',sans-serif;
+}
+
+/* =========================================
+   ROBOT MASCOT
+========================================= */
+
+#ag-ai-bot{
+  width:95px;
+  height:95px;
+  position:relative;
+  cursor:pointer;
+  transition:all .4s ease;
+  animation:agFloat 5s ease-in-out infinite;
+}
+
+#ag-ai-bot:hover{
+  transform:scale(1.08);
+  filter:
+    drop-shadow(0 0 15px rgba(34,211,238,.6))
+    drop-shadow(0 0 35px rgba(124,58,237,.4));
+}
+
+/* Floating animation */
+
+@keyframes agFloat{
+  0%,100%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* =========================================
+   CYBER GLOW
+========================================= */
+
+.ag-glow-ring{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,
+    rgba(34,211,238,.35),
+    rgba(124,58,237,.15),
+    transparent 70%);
+  animation:agPulse 3s infinite;
+}
+
+@keyframes agPulse{
+
+  0%,100%{
+    transform:scale(1);
+    opacity:.7;
+  }
+
+  50%{
+    transform:scale(1.15);
+    opacity:1;
+  }
+}
+
+/* =========================================
+   CHAT WINDOW
+========================================= */
+
+#ag-chat-window{
+  width:380px;
+  height:620px;
+  position:absolute;
+  bottom:120px;
+  right:0;
+
+  display:none;
+  flex-direction:column;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10,10,25,.95),
+      rgba(5,5,15,.98)
+    );
+
+  backdrop-filter:blur(24px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    0 0 50px rgba(124,58,237,.25),
+    0 0 100px rgba(34,211,238,.08);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.ag-chat-header{
+  padding:20px;
+
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  border-bottom:1px solid rgba(255,255,255,.06);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(124,58,237,.15),
+      rgba(34,211,238,.08)
+    );
+}
+
+.ag-header-avatar{
+  width:48px;
+  height:48px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #22d3ee
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+  font-weight:700;
+
+  box-shadow:
+    0 0 25px rgba(34,211,238,.5);
+}
+
+.ag-title{
+  color:white;
+  font-size:16px;
+  font-weight:700;
+}
+
+.ag-subtitle{
+  color:#94a3b8;
+  font-size:12px;
+  margin-top:2px;
+}
+
+/* =========================================
+   CHAT BODY
+========================================= */
+
+#ag-chat-messages{
+  flex:1;
+  overflow-y:auto;
+
+  padding:24px;
+
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+#ag-chat-messages::-webkit-scrollbar{
+  width:6px;
+}
+
+#ag-chat-messages::-webkit-scrollbar-thumb{
+  background:#334155;
+  border-radius:20px;
+}
+
+/* =========================================
+   MESSAGE BUBBLES
+========================================= */
+
+.ag-msg{
+  max-width:82%;
+  padding:14px 18px;
+
+  font-size:14px;
+  line-height:1.7;
+
+  border-radius:20px;
+
+  animation:agFade .3s ease;
+}
+
+@keyframes agFade{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.ag-user{
+  align-self:flex-end;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #22d3ee
+    );
+
+  border-bottom-right-radius:6px;
+}
+
+.ag-bot{
+  align-self:flex-start;
+
+  color:#e2e8f0;
+
+  background:
+    rgba(255,255,255,.04);
+
+  border:
+    1px solid rgba(255,255,255,.05);
+
+  border-bottom-left-radius:6px;
+}
+
+/* =========================================
+   INPUT AREA
+========================================= */
+
+.ag-input-wrap{
+  padding:18px;
+
+  display:flex;
+  gap:12px;
+
+  border-top:
+    1px solid rgba(255,255,255,.05);
+
+  background:
+    rgba(255,255,255,.02);
+}
+
+#ag-user-input{
+  flex:1;
+
+  background:
+    rgba(255,255,255,.05);
+
+  border:none;
+  outline:none;
+
+  color:white;
+
+  padding:14px 16px;
+
+  border-radius:16px;
+
+  font-size:14px;
+}
+
+#ag-user-input::placeholder{
+  color:#64748b;
+}
+
+#ag-send-btn{
+  width:54px;
+  border:none;
+
+  border-radius:16px;
+
+  cursor:pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #22d3ee
+    );
+
+  color:white;
+
+  font-size:20px;
+
+  transition:.3s;
+}
+
+#ag-send-btn:hover{
+  transform:scale(1.05);
+
+  box-shadow:
+    0 0 20px rgba(34,211,238,.4);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:640px){
+
+  #ag-chat-window{
+    width:calc(100vw - 30px);
+    height:78vh;
+    right:-10px;
+  }
+
+  #ag-ai-wrapper{
+    right:18px;
+    bottom:18px;
+  }
+
+}
+
+</style>
+
+<!-- =========================================
+CHATBOT HTML
+========================================= -->
+
+<div id="ag-ai-wrapper">
+
+  <!-- CHAT WINDOW -->
+  <div id="ag-chat-window">
+
+    <!-- HEADER -->
+    <div class="ag-chat-header">
+
+      <div class="ag-header-avatar">
+        AI
+      </div>
+
+      <div>
+        <div class="ag-title">
+          Antigravity AI
+        </div>
+
+        <div class="ag-subtitle">
+          Futuristic Intelligence System
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MESSAGES -->
+    <div id="ag-chat-messages">
+
+      <div class="ag-msg ag-bot">
+        🚀 Welcome to Antigravity.<br><br>
+
+        I can guide you through:
+        <br><br>
+
+        ✦ AI Automation Projects<br>
+        ✦ Data Analytics Skills<br>
+        ✦ Frontend Development<br>
+        ✦ n8n Workflows<br>
+        ✦ GPT Integrations
+      </div>
+
+    </div>
+
+    <!-- INPUT -->
+    <div class="ag-input-wrap">
+
+      <input
+        type="text"
+        id="ag-user-input"
+        placeholder="Ask something futuristic..."
+      >
+
+      <button id="ag-send-btn">
+        ➤
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ROBOT BUTTON -->
+  <div id="ag-ai-bot">
+
+    <div class="ag-glow-ring"></div>
+
+    <!-- SVG ROBOT -->
+    <svg viewBox="0 0 200 200" width="100%" height="100%">
+
+      <defs>
+
+        <linearGradient id="agBotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#22d3ee"/>
+          <stop offset="100%" stop-color="#7c3aed"/>
+        </linearGradient>
+
+      </defs>
+
+      <!-- Outer Ring -->
+      <circle
+        cx="100"
+        cy="100"
+        r="82"
+        fill="rgba(255,255,255,.02)"
+        stroke="url(#agBotGradient)"
+        stroke-width="3"
+        opacity=".5"
+      />
+
+      <!-- Main Head -->
+      <circle
+        cx="100"
+        cy="100"
+        r="64"
+        fill="#0b1120"
+        stroke="url(#agBotGradient)"
+        stroke-width="6"
+      />
+
+      <!-- Inner Face -->
+      <rect
+        x="58"
+        y="62"
+        rx="30"
+        ry="30"
+        width="84"
+        height="76"
+        fill="#020617"
+      />
+
+      <!-- Eyes -->
+      <circle cx="80" cy="96" r="8" fill="#22d3ee">
+
+        <animate
+          attributeName="opacity"
+          values="1;.3;1"
+          dur="2s"
+          repeatCount="indefinite"
+        />
+
+      </circle>
+
+      <circle cx="120" cy="96" r="8" fill="#22d3ee">
+
+        <animate
+          attributeName="opacity"
+          values="1;.3;1"
+          dur="2s"
+          repeatCount="indefinite"
+        />
+
+      </circle>
+
+      <!-- Smile -->
+      <path
+        d="M78 118 Q100 134 122 118"
+        stroke="#22d3ee"
+        stroke-width="5"
+        fill="none"
+        stroke-linecap="round"
+      />
+
+      <!-- Side Nodes -->
+      <circle cx="38" cy="100" r="10" fill="#7c3aed" opacity=".7"/>
+      <circle cx="162" cy="100" r="10" fill="#22d3ee" opacity=".7"/>
+
+      <!-- Top Sensor -->
+      <circle cx="100" cy="42" r="7" fill="#22d3ee">
+
+        <animate
+          attributeName="r"
+          values="7;10;7"
+          dur="1.8s"
+          repeatCount="indefinite"
+        />
+
+      </circle>
+
+    </svg>
+
+  </div>
+
+</div>
+
+<script>
+
+/* =========================================
+OPENROUTER CONFIG
+========================================= */
+
+const AG_API_KEY = "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";
+
+const AG_MODEL = "openai/gpt-4o-mini";
+
+/* =========================================
+SYSTEM PROMPT
+========================================= */
+
+const AG_SYSTEM_PROMPT = `
+
+You are Antigravity AI.
+
+You are the futuristic AI assistant for Suprio Chakraborty's portfolio website.
+
+Your role:
+- Explain projects professionally
+- Discuss AI automation systems
+- Explain data analytics skills
+- Talk about frontend development
+- Guide visitors through the portfolio
+- Encourage collaboration opportunities
+
+Tone:
+- Futuristic
+- Cinematic
+- Intelligent
+- Concise
+- Cyberpunk-inspired
+- Professional
+
+Never break character.
+
+`;
+
+/* =========================================
+MESSAGES
+========================================= */
+
+let agMessages = [
+
+  {
+    role:"system",
+    content:AG_SYSTEM_PROMPT
+  }
+
+];
+
+/* =========================================
+ELEMENTS
+========================================= */
+
+const agBot =
+  document.getElementById("ag-ai-bot");
+
+const agWindow =
+  document.getElementById("ag-chat-window");
+
+const agInput =
+  document.getElementById("ag-user-input");
+
+const agSend =
+  document.getElementById("ag-send-btn");
+
+const agMessagesBox =
+  document.getElementById("ag-chat-messages");
+
+/* =========================================
+TOGGLE CHAT
+========================================= */
+
+agBot.addEventListener("click",()=>{
+
+  if(agWindow.style.display === "flex"){
+
+    agWindow.style.display = "none";
+
+  } else {
+
+    agWindow.style.display = "flex";
+
+  }
+
+});
+
+/* =========================================
+ADD MESSAGE
+========================================= */
+
+function agAddMessage(role,text){
+
+  const div =
+    document.createElement("div");
+
+  div.className =
+    `ag-msg ${role}`;
+
+  div.innerHTML =
+    text.replace(/\n/g,"<br>");
+
+  agMessagesBox.appendChild(div);
+
+  agMessagesBox.scrollTop =
+    agMessagesBox.scrollHeight;
+}
+
+/* =========================================
+SEND MESSAGE
+========================================= */
+
+async function agSendMessage(){
+
+  const text =
+    agInput.value.trim();
+
+  if(!text) return;
+
+  agAddMessage(
+    "ag-user",
+    text
+  );
+
+  agMessages.push({
+    role:"user",
+    content:text
+  });
+
+  agInput.value = "";
+
+  agAddMessage(
+    "ag-bot",
+    "⚡ Processing neural transmission..."
+  );
+
+  try{
+
+    const response =
+      await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          method:"POST",
+
+          headers:{
+            "Authorization":
+              "Bearer " + AG_API_KEY,
+
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+            model:AG_MODEL,
+            messages:agMessages
+          })
+        }
+      );
+
+    const data =
+      await response.json();
+
+    const reply =
+      data.choices?.[0]?.message?.content
+      ||
+      "⚠ Unable to generate response.";
+
+    agMessages.push({
+      role:"assistant",
+      content:reply
+    });
+
+    agMessagesBox.lastChild.remove();
+
+    agAddMessage(
+      "ag-bot",
+      reply
+    );
+
+  } catch(error){
+
+    agMessagesBox.lastChild.remove();
+
+    agAddMessage(
+      "ag-bot",
+      "⚠ Deep space connection interrupted."
+    );
+
+  }
+
+}
+
+/* =========================================
+EVENTS
+========================================= */
+
+agSend.addEventListener(
+  "click",
+  agSendMessage
+);
+
+agInput.addEventListener(
+  "keydown",
+  (e)=>{
+
+    if(e.key === "Enter"){
+
+      agSendMessage();
+
+    }
+
+  }
+);
+
+</script>
 </body>
 
 </html>
